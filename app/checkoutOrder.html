@@ -1,0 +1,42 @@
+---
+title: 付款完成
+layout: ./app/layout.ejs
+engine: ejs
+current: checkoutOrder
+---
+<!--區塊1-->
+<section class="about-banner">
+  <div class="container">
+    <div class="about-banner-title">
+      <h2>付款完成</h2>
+    </div>
+  </div>
+</section>
+<!--區塊2-->
+<section class="orderPay-content">
+  <div class="container">
+    <div class="row d-felx justify-content-center">
+      <div class="col-lg-8 col-md-6 col-12">
+        <div class="bg-primary py-4 text-light text-center">
+          <h3 class="fs-4">訂單資訊</h3>
+        </div>
+        <div class="bg-table border border-third p-3">
+          <ul class="orderWrap"></ul>
+          <table class="orderTable table mb-0"></table>
+          <table class="order-paid table"></table>
+          <table class="order-cart-final d-none"></table>
+          <ul class="spentWrap d-none"></ul>
+          <ul class="orderCheck d-none">
+            <ul class="orderInfor"></ul>
+          </ul>
+          <div class="d-flex justify-content-center mb-2">
+            <div class="order-backBtn w-25">
+              <a href="shop.html">返回購物</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

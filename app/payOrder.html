@@ -1,0 +1,76 @@
+---
+title: 建立訂單
+layout: ./app/layout.ejs
+engine: ejs
+current: payOrder
+---
+<!--區塊1-->
+<section class="about-banner">
+  <div class="container">
+    <div class="about-banner-title">
+      <h2>建立訂單</h2>
+    </div>
+  </div>
+</section>
+<!--區塊2-->
+<section class="check-order-content">
+  <div class="container">
+  </div>
+</section>
+<!--區塊3-->
+<section class="orderPay-content">
+  <div class="container">
+    <div class="row d-lg-flex flex-lg-row flex-md-column-reverse flex-column-reverse">
+      <div class="col-lg-6 col-md-12 col-12">
+        <div class="bg-primary py-4 text-light text-center">
+          <h3 class="fs-4">訂單資訊</h3>
+        </div>
+        <div class="bg-table border border-third p-3">
+          <ul class="orderWrap"></ul>
+          <table class="orderTable table mb-0"></table>
+          <table class="order-paid table"></table>
+          <div class="d-flex justify-content-center">
+            <ul class="spentWrap mb-3 d-flex justify-content-center align-items-center">
+              <a href="checkoutOrder.html" class="payBtn" id="payBtn" data-id="${item.id}">
+                確認付款
+              </a>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- 購物明細 -->
+      <div class="col-lg-6 col-md-12 col-12 mb-5">
+        <div class="bg-primary py-4 text-light text-center">
+          <h3 class="fs-4">訂單明細</h3>
+        </div>
+        <div class="bg-table border border-third p-3">
+          <ul class="shop-product-list d-none"></ul>
+          <div class="row align-items-center text-center border-bottom border-third pb-3">
+            <div class="w-25">
+              <p>商品圖片</p>
+            </div>
+            <div class="w-25">
+              <p>商品名稱</p>
+            </div>
+            <div class="w-25">
+              <p>數量</p>
+            </div>
+            <div class="w-25 pe-4">
+              <p>小計</p>
+            </div>
+          </div>
+          <ul class="orderInfor d-none"></ul>
+          <ul class="orderCheck"></ul>
+          <!-- 總金額 -->
+          <div class="row d-flex flex-row-reverse">
+            <div class="fs-5 total-price d-flex justify-content-between mt-3">
+              <p class="fw-bold final-total ps-3">總金額:</p>
+              <span class="order-cart-final text-danger fw-bold pe-4"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

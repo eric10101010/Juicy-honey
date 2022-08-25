@@ -1,0 +1,92 @@
+.order {
+    &-content {
+        margin-top: 60px;
+    }
+    &-list {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    &-image {
+        width: 33%;
+        margin: 16px 0;
+        img {
+            width: 80px;
+            height: 80px;
+        }
+    }
+    &-title {
+        width: 30%;
+        margin-right: 0px;
+    }
+    &-qty {
+        width: 20%;
+        margin-left: 20px;
+    }
+    &-price {
+        width: 20%;
+        margin-left: 0px;
+    }
+    &-totalPrice{
+        padding-right: 6%;
+    }
+    &-backBtn {
+        background-color: #ffac25;
+        color: #ffffff;
+        padding: 8px 0;
+        text-align: center;
+        border-radius: 10px;
+        &:hover {
+            background-color: $secondary;
+            transition: .8s;
+            color: #ffffff;
+        }
+    }
+    &Btn {
+        background-color: #ffac25;
+        color: #ffffff;
+        padding: 8px 0;
+        text-align: center;
+        border-radius: 10px;
+        &:hover {
+            background-color: $secondary;
+            transition: .8s;
+            color: #ffffff;
+        }
+    }
+}
+
+.order {
+    &Pay {
+        &-content {
+            margin: 60px 0;
+        }
+    }
+    &-backBtn{
+        background-color: #ffac25;
+        &:hover {
+            background-color: $secondary;
+            transition: .8s;
+        }
+        a {
+            display: block;
+            color: #ffffff;
+            text-align: center;
+        }
+    }
+}
+.payBtn{
+    display: block;
+    background-color: #ffac25;
+    border-radius: 10px;
+    padding: 8px 25px;
+    color: #ffffff;
+    &:hover {
+        background-color: $secondary;
+        transition: .8s;
+        color: #ffffff;
+    }
+}
+.order-totalprice {
+    padding-right: 8.5%;
+}

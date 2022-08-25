@@ -1,0 +1,40 @@
+.news {
+    &-item {
+        a {
+            overflow: hidden;
+            border-radius: 0px 10px 0 0;
+        }
+        img {
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            border-radius: 10px 10px 0 0;
+            &:hover {
+                transform: scale(1.2);
+                transition: 1.2s;
+            }
+        }
+    }
+    &-text {
+        box-shadow: 2px 2px 5px rgba(123, 116, 116, 0.7);
+        border-radius: 0 0 10px 10px;
+        &-title h3 {
+            border-bottom: 1px solid #ccc;
+            border-left: 1px solid #ccc;
+        }
+        &-title a {
+            border-left: 1px solid #ccc;
+            color: #000000;
+            font-weight: bold;
+            &:hover {
+                color: #ffac25;
+                transition: .5s;
+            }
+        }
+    }
+    &-date {
+        border-radius: 0 0px 0px 10px;
+        background-color: #ffac25;
+        color: #ffffff;
+    }
+}
