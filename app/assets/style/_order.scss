@@ -1,0 +1,129 @@
+.order {
+    &-content {
+        margin-top: 60px;
+        @include mobile {
+            margin-top: 40px;
+        }
+    }
+    &Wrap {
+        color: red;
+    }
+    &-list {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    &-image {
+        width: 33%;
+        margin: 16px 0;
+        img {
+            width: 80px;
+            height: 80px;
+            @include mobile {
+                width: 45px;
+                height: 45px;
+            }
+        }
+    }
+    &-title {
+        width: 30%;
+        margin-right: 0px;
+    }
+    &-qty {
+        width: 20%;
+        margin-left: 20px;
+    }
+    &-price {
+        width: 20%;
+        margin-left: 0px;
+    }
+    &-totalPrice{
+        padding-right: 6%;
+    }
+    &-backBtn {
+        text-align: center;
+        border: 1px solid $primary;
+        border-radius: 12px;
+        color: $primary;
+        padding: 8px 0;
+        &:hover {
+            background-color: $primary;
+            color: $white;
+            transition: .5;
+        }
+    }
+    &Btn {
+        text-align: center;
+        background-color: $primary;
+        border-radius: 12px;
+        padding: 8px 24px;
+        color: $white;
+        @include mobile {
+            padding: 8px 0;
+            width: 100px;
+        }
+        &:hover {
+            color: $white;
+            opacity: .5;
+            transition: .5;
+        }
+    }
+    &Table {
+        @include mobile {
+            font-size: 14px;
+        }
+    }
+    &Pay {
+        &-content {
+            margin: 60px 0;
+            @include mobile {
+                margin-top: 40px;
+            }
+            p {
+                @include mobile {
+                    font-size: 16px;
+                }
+            }
+            li {
+                @include mobile {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+    &-paid {
+        border-bottom: 1px solid #ccc;
+        p {
+            font-size: 16px;
+            @include mobile {
+                font-size: 12px;
+            }
+        }
+        @include mobile {
+            font-size: 14px;
+        }
+        img {
+            @include mobile {
+                width: 18px;
+                height: 18px;
+            }
+        }
+    }
+}
+
+.payBtn{
+    margin-top: 16px;
+    display: block;
+    background-color: $primary;
+    border-radius: 10px;
+    padding: 8px 24px;
+    color: #ffffff;
+    &:hover {
+        opacity: .6;
+        background-color: red;
+        color: #ffffff;
+    }
+}
+.order-totalprice {
+    padding-right: 8.5%;
+}

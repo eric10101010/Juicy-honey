@@ -1,0 +1,135 @@
+---
+title: 資料填寫
+layout: ./app/layout.ejs
+engine: ejs
+current: checkOrder
+---
+<!--區塊1-->
+<section class="about-banner">
+  <div class="container">
+    <div class="about-banner-title">
+      <h2>訂單資料填寫</h2>
+    </div>
+  </div>
+</section>
+<!--區塊2-->
+<section class="check-order-content">
+  <div class="container">
+  </div>
+</section>
+<!--區塊3-->
+<section class="order-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-12 member-data mb-5">
+        <div class="bg-primary py-4 text-light text-center">
+          <h3 class="fs-4">顧客資訊</h3>
+        </div>
+
+        <div class="bg-table border border-third p-3 py-4">
+          <Form class="orderInfo-form bg-table px-4">
+            <!-- <div class="d-flex flex-column mb-3">
+              <label for="name" class="pb-2">姓名：</label>
+              <input type="text" class="form-name" id="name" placeholder="請輸入姓名" name="姓名">
+              <p class="orderInfo-message text-danger" data-message="姓名">必填</p>
+            </div> -->
+            <div class="d-flex flex-column mb-3">
+              <label for="name" class="pb-2">姓名：</label>
+              <input type="text" class="form-name" id="name" placeholder="請輸入姓名" name="姓名">
+              <p class="orderInfo-message text-danger" data-message="姓名">必填</p>
+            </div>
+            <div class="d-flex flex-column mb-3">
+              <label for="email" class="pb-2">信箱：</label>
+              <input type="email" class="form-email"" id="email" placeholder="example@gmail.com" name="Email">
+              <p class="orderInfo-message text-danger" data-message="Email">必填</p>
+            </div>
+            <div class="d-flex flex-column mb-3">
+              <label for="tel" class="pb-2">電話：</label>
+              <!-- <input type="text" name="tel" id="tel" class="form-tel" placeholder="0933-333-333"> -->
+              <input type="text" class="form-tel" id="tel" placeholder="請輸入電話" name="電話">
+              <p class="orderInfo-message text-danger" data-message="電話">必填</p>
+            </div>
+            
+            <div class="d-flex flex-column mb-3">
+              <label for="address" class="pb-2">住址：</label>
+              <input type="text" class="form-address" id="adress" placeholder="請輸入寄送地址" name="寄送地址">
+              <p class="orderInfo-message text-danger" data-message="寄送地址">必填</p>
+            </div>
+
+            <div class="pt-2">
+              <label for="payWay" class="form-label">付款方式:</label>
+                <select id="payWay" class="form-select form-payWay" name="付款方式" aria-label="Default select example">
+                  <!-- <option value="" disabled="disabled" selected>請選擇付款方式</option> -->
+                  <option value="超商付款" selected>超商付款</option>         
+                  <option value="ATM付款">ATM付款</option>
+                  <option value="網路ATM付款">網路ATM付款</option>
+                </select>
+            </div>
+            <div class="py-3">
+              <label for="message" class="pb-2">備註:</label>
+              <textarea
+                id="message"
+                class="form-control form-message"
+                cols="30"
+                rows="3"
+                v-model="form.message"></textarea>
+            </div>
+          <div class="row pt-2 d-felx justify-content-around">
+            <div class="w-50">
+              <a href="shop.html" class="order-backBtn">返回購物</a>
+            </div>
+            <div class="w-50">
+              <ul class="orderWrap">
+                <a href="payOrder.html" class="orderBtn orderInfo-btn" id="order-btn" data-id="${item.id}">送出訂單</a>
+              </ul>
+            </div>
+          </div>
+          </Form>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-12 mb-5">
+        <div class="bg-primary py-4 text-light text-center">
+          <h3 class="fs-4">訂單資訊</h3>
+        </div>
+        <div class="bg-table border border-third p-3">
+          <ul class="shop-product-list d-none">
+          </ul>
+          <div class="row align-items-center text-center border-bottom border-third pb-3">
+            <div class="w-25">
+              <p>商品圖片</p>
+            </div>
+            <div class="w-25">
+              <p>商品名稱</p>
+            </div>
+            <div class="w-25">
+              <p>數量</p>
+            </div>
+            <div class="col-2">
+              <p>小計</p>
+            </div>
+          </div>
+          <ul class="orderInfor"></ul>
+          <ul class="row align-items-center text-center ">
+            <il class="col-3">
+              <div class="product-photo">
+              </div>
+            </il>
+          </ul>
+          <ul class="row pt-4 flex-row-reverse">
+            <li class="col-12 w-100 pb-2">
+              <div class="fs-5 d-flex justify-content-between order-totalPrice">
+                <p class="fw-bold text-lg final-total ps-4">總金額:</p>
+                <p class="cart-finalprice fw-bold text-danger"></p>
+              </div>
+            </li>
+          </ul>
+          <ul class="spentWrap d-none"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
