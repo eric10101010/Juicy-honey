@@ -80,24 +80,18 @@
           <li class="hamburger-item pe-0"><a href="news.html" class="hamburger-link">最新消息</a></li>
           <li class="hamburger-item"><a href="shop.html" class="hamburger-link">購物商城</a></li>
           <li class="hamburger-item"><a href="locate.html" class="hamburger-link">門市據點</a></li>
-          <li class="hamburger-item"><a href="#" class="hamburger-icon"><img src="./assets/images/account.png" alt="member"></a></li>
-          <li class="hamburger-item"><a href="#" class="hamburger-icon"><img src="./assets/images/cart.png" alt="cart"></a></li>
-        </ul>
-      </div>
-      <nav class="header-list">
-        <ul class="header-menu">
-          <li class="header-item"><a href="about.html" class="header-link">品牌故事</a></li>
-          <li class="header-item pe-0"><a href="news.html" class="header-link">最新消息</a></li>
-          <li class="header-item"><a href="shop.html" class="header-link">購物商城</a></li>
-          <li class="header-item"><a href="locate.html" class="header-link offcanvas-toggle">門市據點</a></li>
-          <li class="header-item"><a href="#" class="header-icon"><img src="./assets/images/account.png" alt="member"></a></li>
-          <li>
-            <div class="offcanvas offcanvas-end bg-light" tabindex="-1" id="offcanvasCart" ref="offcanvas">
+          <li class="hamburger-item">
+            <a href="#" class="hamburger-icon" data-bs-toggle="modal" data-bs-target="#loginModal">
+              <img src="./assets/images/account.png" alt="member">
+            </a>
+          </li>
+          <!-- <li>
+            <div class="modal-cart offcanvas offcanvas-end" tabindex="-1" id="offcanvasCart" ref="offcanvas">
               <div class="offcanvas-header border-bottom-3px border-primary bg-primary text-white">
                 <h3 class="fw-bold fs-5 ps-2">購物車列表</h3>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"/>
+                <span class="material-icons fw-bold" type="button" data-bs-dismiss="offcanvas" aria-label="Close"/>close</span>
               </div>
-              <div class="offcanvas-body">
+              <div class="cart-empty offcanvas-body">
                 <div class="cart-header border-bottom borde-dark d-flex text-center pb-2 mb-3">
                   <div class="col-4">
                     <p>商品名稱</p>
@@ -122,25 +116,165 @@
                   </div>
                   <div class="d-flex justify-content-center">
                     <ul class="cart-orderbtn w-50">
-                      <a href="checkOrder.html">前往結賬</a>
+                      <a href="shop.html">前往購物</a>
                     </ul>
                   </div>
                   <ul class="payWrap"></ul>
                 </div>
               </div>
-          </div>
+            </div>
           </li>
-          <li class="nav-item c-navbar__item">
-            <a
-              href="#offcanvasCart"
-              class="nav-link position-relative header-icon"
-              data-bs-toggle="offcanvas"
-            >
-            <img src="./assets/images/cart.png" alt="cart">
+          <li class="nav-item">
+            <a href="#offcanvasCart" class="nav-link position-relative header-icon" data-bs-toggle="offcanvas">
+              <img src="./assets/images/cart.png" alt="cart">
+            </a>
+          </li> -->
+        </ul>
+      </div>
+      <nav class="header-list">
+        <ul class="header-menu">
+          <li class="header-item"><a href="about.html" class="header-link">品牌故事</a></li>
+          <li class="header-item pe-0"><a href="news.html" class="header-link">最新消息</a></li>
+          <li class="header-item"><a href="shop.html" class="header-link">購物商城</a></li>
+          <li class="header-item"><a href="locate.html" class="header-link offcanvas-toggle">門市據點</a></li>
+          <li class="header-item">
+            <a href="#" class="header-icon" data-bs-toggle="modal" data-bs-target="#loginModal">
+              <img src="./assets/images/account.png" alt="member">
+            </a>
+          </li>
+          <li>
+            <div class="offcanvas offcanvas-end bg-light" tabindex="-1" id="offcanvasCartPC" ref="offcanvas">
+              <div class="offcanvas-header border-bottom-3px border-primary bg-primary text-white">
+                <h3 class="fw-bold fs-5 ps-2">購物車列表</h3>
+                <span class="material-icons fw-bold" type="button" data-bs-dismiss="offcanvas" aria-label="Close"/>close</span>
+              </div>
+              <div class="cart-empty offcanvas-body">
+                <div class="cart-header border-bottom borde-dark d-flex text-center pb-2 mb-3">
+                  <div class="col-4">
+                    <p>商品名稱</p>
+                  </div>
+                  <div class="col-4">
+                    <p>數量</p>
+                  </div>
+                  <div class="col-3 ps-2">
+                    <p>小記</p>
+                  </div>
+                  <div class="col-1"></div>
+                </div>
+                <div class="row text-center">
+                  <ul class="cartList">
+                  </ul>
+                  <div class="d-flex justify-content-between align-items-center order-totalPrice mt-2 mb-4">           
+                    <a href="#" class="deleteAllBtn">刪除全部品項</a>
+                    <div class="d-flex fs-5">
+                      <p class="fw-bold text-lg final-total">總金額:</p>
+                      <p class="cart-final fw-bold text-danger"></p>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <ul class="cart-orderbtn w-50">
+                      <a href="shop.html">前往購物</a>
+                    </ul>
+                  </div>
+                  <ul class="payWrap"></ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="#offcanvasCartPC" class="nav-link position-relative header-icon" data-bs-toggle="offcanvas">
+              <img src="./assets/images/cart.png" alt="cart">
             </a>
           </li>
         </ul>
       </nav>
+      <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered d-flex justify-content-center">
+          <div class="modal-content">
+            <div class="modal-login d-flex flex-column align-items-center">
+              <div class="modal-login-header d-flex align-items-center justify-content-between w-100">
+                <span></span>
+                <h3 class="fw-bold text-white">會員登入</h3>
+                <a href="#" class="material-icons text-white fw-bold" data-bs-dismiss="modal" aria-label="Close">
+                  close
+                </a>
+              </div>
+              <h4 class="fw-bold d-lg-none d-md-none d-flex text-white">登入</h4>
+              <div class="modal-login-body d-flex flex-column ">
+                <div class="modal-login-body-form d-flex flex-column pb-lg-4 pb-md-4 pb-3">
+                  <label for="account" class="fw-bold">帳號:</label>
+                  <input type="account" class="form-account w-100" id="account" placeholder="請輸入帳號">
+                </div>
+                <div class="modal-login-body-form d-flex flex-column pb-lg-4 pb-md-4 pb-3">
+                  <label for="password" class="fw-bold">密碼:</label>
+                  <input type="password" class="form-password w-100" id="password" placeholder="請輸入密碼">
+                </div>
+                <a href="index.html">登入</a>
+              </div>
+              <div class="modal-signin modal-login-button d-flex">
+                <a href="#">忘記密碼</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#signinModal">
+                  <h3>點我註冊</h3>
+                </a>
+              </div>
+              <div class="modal-login-footer d-flex">
+                  <div class="modal-login-footer-button d-flex align-items-center modal-login-footer-mb w-50">
+                    <img src="./assets/images/icon_fb.svg" alt="google">
+                    <a href="#">Facebook 登入</a>
+                  </div>
+                  <div class="modal-login-footer-button d-flex align-items-center modal-login-footer-mb w-50">
+                    <img src="./assets/images/icon_google.svg" alt="google">
+                    <a href="#">Google 登入</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="signinModal" tabindex="-1" aria-labelledby="signinModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered d-flex justify-content-center">
+          <div class="modal-content">
+            <div class="modal-login d-flex flex-column align-items-center">
+              <div class="modal-login-header d-flex align-items-center justify-content-between w-100">
+                <span></span>
+                <h3 class="fw-bold">會員註冊</h3>
+                <a href="#" class="material-icons text-white" data-bs-dismiss="modal" aria-label="Close">
+                  close
+                </a>
+              </div>
+              <h4 class="fw-bold d-lg-none d-md-none d-flex text-white">登入</h4>
+              <div class="modal-login-body d-flex flex-column ">
+                <div class="d-flex" style="column-gap:24px;">
+                  <div class="modal-login-body-form d-flex flex-column pb-lg-4 pb-md-4 pb-3 w-50">
+                    <label for="user" class="fw-bold">姓名:</label>
+                    <input type="user" class="form-user w-100" id="user" placeholder="請輸入姓名">
+                  </div>
+                  <div class="modal-login-body-form d-flex flex-column pb-lg-4 pb-md-4 pb-3 w-50">
+                    <label for="nickname" class="fw-bold">暱稱:</label>
+                    <input type="nickname" class="form-nickname w-100" id="nickname" placeholder="請輸入暱稱">
+                  </div>
+                </div>
+
+                <div class="modal-login-body-form d-flex flex-column pb-lg-4 pb-md-4 pb-3">
+                  <label for="account" class="fw-bold">帳號:</label>
+                  <input type="account" class="form-account w-100" id="account" placeholder="密碼請由12位英文及數字組成">
+                </div>
+                <div class="modal-login-body-form d-flex flex-column pb-lg-4 pb-md-4 pb-3">
+                  <label for="password" class="fw-bold">密碼:</label>
+                  <input type="password" class="form-password w-100" id="password" placeholder="請再次輸入密碼">
+                </div>
+                <div class="modal-login-body-form d-flex flex-column pb-lg-4 pb-md-4 pb-3">
+                  <label for="password" class="fw-bold">確認密碼:</label>
+                  <input type="password" class="form-password w-100" id="password" placeholder="請輸入密碼">
+                </div>
+                <div class="modal-signin-button my-4">
+                  <a href="index.html">註冊帳號</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
   <div class="main">

@@ -54,6 +54,7 @@ var formTel = document.querySelector('.form-tel');
 var formAddress = document.querySelector('.form-address');
 var formPayway = document.querySelector('.form-payWay');
 var formMessage = document.querySelector('.form-message');
+var cartBtn = document.querySelector('.cart-orderbtn');
 var cartData = [];
 var productData = [];
 var orderData = [];
@@ -77,33 +78,26 @@ function getProduct() {
   })["catch"](function (err) {
     console.log(err);
   });
-} // //商品渲染
-// function renderData(data) {
-//     let str ="";
-//     productData.forEach(item =>{
-//     str += `<li class="shop-product-item mb-4">
-//                 <img src="${item.imageUrl}" alt="">
-//                 <div class="shop-product-text">
-//                     <h3>${item.title}</h3>
-//                 </div>
-//                 <div class="shop-product-price d-flex justify-content-around px-3 pt-1 pb-3">
-//                     <h3>${item.price}</h3>
-//                     <a href="#" class="add-btn" id="addCardBtn" data-id="${item.id}">
-//                         <img src="./assets/images/cart.png" alt="cart">加入購物車
-//                     </a>
-//                 </div>
-//             </li>`;
-//     })
-//     productWrap.innerHTML = str;
-// }
-//取得訂單
+} //取得訂單
 
 
 function getCartList() {
   var url = "https://vue3-course-api.hexschool.io/api/item666/cart";
   axios.get(url).then(function (res) {
     cartData = res.data.data.carts;
-    cartPrice = res.data.data.final_total; //console.log(cartData);
+    cartPrice = res.data.data.final_total; //console.log(cartData.length);
+    //判斷購物車是否為空
+
+    if (cartData.length == 0) {
+      console.log(cartData);
+      var str = "";
+      str += "<a href=\"shop.html\">\u524D\u5F80\u8CFC\u7269</a>";
+      cartBtn.innerHTML = str;
+    } else {
+      var _str = "";
+      _str += "<a href=\"checkOrder.html\">\u524D\u5F80\u7D50\u5E33</a>";
+      cartBtn.innerHTML = _str;
+    }
 
     renderCarts();
     renderFinalPrice();
@@ -154,11 +148,31 @@ productWrap.addEventListener("click", function (e) {
 }); //渲染購物車
 
 function renderCarts() {
-  var str = "";
-  cartData.forEach(function (item) {
-    str += "<li class=\"cart-item border-bottom border-third pb-2\">\n                    <div class=\"cart-item-title ms-2 ps-2\">\n                        <img src=\"".concat(item.product.imageUrl, "\" alt=\"cart-photo\">\n                        <h3 class=\"pt-1\">").concat(item.product.title, "</h3>\n                    </div>\n                    <div class=\"cart-item ps-4\">\n                        <div class=\"qtyWrap d-inline-block d-flex\">\n                            <button type=\"button\" item-Id=").concat(item.id, " data-num=").concat(item.qty, "\n                                    class=\"cart-minusBtn\">\n                                -\n                            </button>\n                            <span type=\"number\" id=\"number\"\n                                    class=\"px-2 d-flex justify-content-center align-items-center border border-third\">\n                                    ").concat(item.qty, "\n                            </span>\n                            <button type=\"button\" item-Id=").concat(item.id, " data-num=").concat(item.qty, "\n                                    class=\"cart-addBtn\">\n                                +\n                            </button>\n                        </div>\n                    </div>\n                    <div class=\"cart-item ps-4\">\n                        <h3>").concat(item.total, "</h3>\n                    </div>\n                    <div class=\"cart-icon\">\n                        <a href=\"#\" class=\"cart-delete bg-danger rounded-circle\">\n                            <img src=\"./assets/images/delete.png\" alt=\"delete\" data-id=").concat(item.id, ">\n                        </a>\n                    </div>\n                </li>");
-  });
-  cartList.innerHTML = str;
+  if (cartData.length == 0) {
+    var str = "";
+    str += "<div class=\"cart-empty fw-bold my-4\">\n                    <h3 class=\"fs-5 text-danger\">\u76EE\u524D\u8CFC\u7269\u8ECA\u70BA\u7A7A</h3>\n                </div>";
+    cartList.innerHTML = str;
+  } else {
+    var _str2 = "";
+    cartData.forEach(function (item) {
+      _str2 += "<li class=\"cart-item border-bottom border-third pb-2\">\n                    <div class=\"cart-item-title ms-2 ps-2\">\n                        <img src=\"".concat(item.product.imageUrl, "\" alt=\"cart-photo\">\n                        <h3 class=\"pt-1\">").concat(item.product.title, "</h3>\n                    </div>\n                    <div class=\"cart-item ps-4\">\n                        <div class=\"qtyWrap d-inline-block d-flex\">\n                            <button type=\"button\" item-Id=").concat(item.id, " data-num=").concat(item.qty, "\n                                    class=\"cart-minusBtn\">\n                                -\n                            </button>\n                            <span type=\"number\" id=\"number\"\n                                    class=\"px-2 d-flex justify-content-center align-items-center border border-third\">\n                                    ").concat(item.qty, "\n                            </span>\n                            <button type=\"button\" item-Id=").concat(item.id, " data-num=").concat(item.qty, "\n                                    class=\"cart-addBtn\">\n                                +\n                            </button>\n                        </div>\n                    </div>\n                    <div class=\"cart-item ps-4\">\n                        <h3>").concat(item.total, "</h3>\n                    </div>\n                    <div class=\"cart-icon\">\n                        <a href=\"#\" class=\"cart-delete bg-danger rounded-circle\">\n                            <img src=\"./assets/images/delete.png\" alt=\"delete\" data-id=").concat(item.id, ">\n                        </a>\n                    </div>\n                </li>\n                ");
+    });
+    cartList.innerHTML = _str2; //判斷購物車是否為空
+
+    if (cartData.length == 0) {
+      console.log(cartData);
+      var _str3 = "";
+      _str3 += "<a href=\"shop.html\">\u524D\u5F80\u8CFC\u7269</a>";
+      cartBtn.innerHTML = _str3;
+    } else {
+      var _str4 = "";
+      _str4 += "<a href=\"checkOrder.html\">\u524D\u5F80\u7D50\u5E33</a>";
+      cartBtn.innerHTML = _str4;
+    }
+
+    console.log(cartData.length);
+  }
+
   $('.cart-addBtn').on('click', function () {
     adjustQty();
   });
@@ -371,11 +385,15 @@ function getOrderList() {
 function renderOrders() {
   var str = "";
   var item = orderData;
+  var timestamp = parseInt("".concat(item.create_at) * 1000);
+  var date = new Date(timestamp);
+  var newDate = "".concat(date.getFullYear(), "/").concat(date.getMonth() + 1, "/").concat(date.getDate(), "/").concat(date.getHours(), ":").concat(date.getMinutes());
+  console.log(newDate); //console.log(date.toString() + "<br />");
 
   if (orderData.message == undefined) {
-    str += "\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u8A02\u55AE\u7DE8\u865F:</th>\n            <td>".concat(item.id, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u8A02\u55AE\u65E5\u671F:</th>\n            <td>").concat(item.create_at, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u6536\u4EF6\u4EBA\u59D3\u540D:</th>\n            <td>").concat(item.user.name, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u6536\u4EF6\u4EBA\u4FE1\u7BB1:</th>\n            <td>").concat(item.user.email, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u6536\u4EF6\u4EBA\u96FB\u8A71:</th>\n            <td>").concat(item.user.tel, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u6536\u4EF6\u4EBA\u5730\u5740:</th>\n            <td>").concat(item.user.address, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u904B\u9001\u65B9\u5F0F:</th>\n            <td>").concat(item.user.payWay, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u5099\u8A3B:</th>\n            <td class=\"text-gary\">\u7121\u586B\u5BEB</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u7E3D\u91D1\u984D:</th>\n            <td class=\"fw-bold\">").concat(item.total, "</td>\n        </tr>");
+    str += "\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u8A02\u55AE\u7DE8\u865F:</th>\n            <td>".concat(item.id, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u8A02\u55AE\u65E5\u671F:</th>\n            <td>").concat(newDate, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u6536\u4EF6\u4EBA\u59D3\u540D:</th>\n            <td>").concat(item.user.name, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u6536\u4EF6\u4EBA\u4FE1\u7BB1:</th>\n            <td>").concat(item.user.email, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u6536\u4EF6\u4EBA\u96FB\u8A71:</th>\n            <td>").concat(item.user.tel, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u6536\u4EF6\u4EBA\u5730\u5740:</th>\n            <td>").concat(item.user.address, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u904B\u9001\u65B9\u5F0F:</th>\n            <td>").concat(item.user.payWay, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u5099\u8A3B:</th>\n            <td class=\"text-gary\">\u7121\u586B\u5BEB</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u7E3D\u91D1\u984D:</th>\n            <td class=\"fw-bold\">").concat(item.total, "</td>\n        </tr>");
   } else {
-    str += "\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u8A02\u55AE\u7DE8\u865F:</th>\n            <td>".concat(item.id, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u8A02\u55AE\u65E5\u671F:</th>\n            <td>").concat(item.create_at, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u6536\u4EF6\u4EBA\u59D3\u540D:</th>\n            <td>").concat(item.user.name, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u6536\u4EF6\u4EBA\u4FE1\u7BB1:</th>\n            <td>").concat(item.user.email, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u6536\u4EF6\u4EBA\u96FB\u8A71:</th>\n            <td>").concat(item.user.tel, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u6536\u4EF6\u4EBA\u5730\u5740:</th>\n            <td>").concat(item.user.address, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u904B\u9001\u65B9\u5F0F:</th>\n            <td>").concat(item.user.payWay, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u5099\u8A3B:</th>\n            <td>").concat(item.message, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u7E3D\u91D1\u984D:</th>\n            <td class=\"fw-bold\">").concat(item.total, "</td>\n        </tr>");
+    str += "\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u8A02\u55AE\u7DE8\u865F:</th>\n            <td>".concat(item.id, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u8A02\u55AE\u65E5\u671F:</th>\n            <td>").concat(newDate, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u6536\u4EF6\u4EBA\u59D3\u540D:</th>\n            <td>").concat(item.user.name, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u6536\u4EF6\u4EBA\u4FE1\u7BB1:</th>\n            <td>").concat(item.user.email, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u6536\u4EF6\u4EBA\u96FB\u8A71:</th>\n            <td>").concat(item.user.tel, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u6536\u4EF6\u4EBA\u5730\u5740:</th>\n            <td>").concat(item.user.address, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u904B\u9001\u65B9\u5F0F:</th>\n            <td>").concat(item.user.payWay, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u5099\u8A3B:</th>\n            <td>").concat(item.message, "</td>\n        </tr>\n        <tr class=\"order-infor-item d-flex justify-content-between\">\n            <th>\u7E3D\u91D1\u984D:</th>\n            <td class=\"fw-bold\">").concat(item.total, "</td>\n        </tr>");
   }
 
   orderTable.innerHTML = str;
@@ -387,9 +405,9 @@ function renderOrderPaid() {
   var str = ""; //console.log(orderData.is_paid);
 
   if (orderData.is_paid == true) {
-    str += "<tr class=\"order-infor-item d-flex justify-content-between\">\n                    <th>\u4ED8\u6B3E\u72C0\u614B:</th>\n                    <td class=\"text-success d-flex align-items-center\">\n                        <p class=\"pe-2\">\u4ED8\u6B3E\u6210\u529F</p>\n                        <img src=\"./assets/images/check-circle.png\" alt=\"icon\" class=\"bg-success rounded-circle\">\n                    </td>\n                </tr>";
+    str += "<tr class=\"order-infor-item d-flex justify-content-between pb-4\">\n                    <th>\u4ED8\u6B3E\u72C0\u614B:</th>\n                    <td class=\"text-success d-flex align-items-center\">\n                        <p class=\"pe-2\">\u4ED8\u6B3E\u6210\u529F</p>\n                        <img src=\"./assets/images/check-circle.png\" alt=\"icon\" class=\"bg-success rounded-circle\">\n                    </td>\n                </tr>";
   } else {
-    str += " <tr class=\"order-infor-item d-flex justify-content-between\">\n                    <th>\u4ED8\u6B3E\u72C0\u614B:</th>\n                    <td class=\"text-danger d-flex align-items-center\">\n                        <p class=\"pe-2\">\u5C1A\u672A\u4ED8\u6B3E</p>\n                        <img src=\"./assets/images/close-circle-outline.png\" alt=\"icon\" class=\"bg-danger rounded-circle\">\n                    </td>\n                </tr>";
+    str += " <tr class=\"order-infor-item d-flex justify-content-between pb-4\">\n                    <th>\u4ED8\u6B3E\u72C0\u614B:</th>\n                    <td class=\"text-danger d-flex align-items-center\">\n                        <p class=\"pe-2\">\u5C1A\u672A\u4ED8\u6B3E</p>\n                        <img src=\"./assets/images/close-circle-outline.png\" alt=\"icon\" class=\"bg-danger rounded-circle\">\n                    </td>\n                </tr>";
   }
 
   orderPaid.innerHTML = str;
@@ -407,7 +425,7 @@ function renderOrderPrice() {
 function renderOrderCheck() {
   var str = "";
   products.forEach(function (item) {
-    str += "<ul class=\"d-flex justify-content-around align-items-center border-bottom border-third\">\n                    <li class=\"order-image w-25 ps-3\">\n                        <img src=\"".concat(item[1].product.imageUrl, "\" alt=\"order-photo\">\n                    </li>\n                    <li class=\"w-25 text-center\">").concat(item[1].product.title, "</li>\n                    <li class=\"w-25 text-center ps-2\">").concat(item[1].qty, "</li>\n                    <li class=\"w-25 text-center ps-2\">").concat(item[1].total, "</li>\n                </ul>");
+    str += "<ul class=\"d-flex justify-content-around align-items-center border-bottom border-third\">\n                    <li class=\"order-image w-25 ps-3\">\n                        <img src=\"".concat(item[1].product.imageUrl, "\" alt=\"order-photo\">\n                    </li>\n                    <li class=\"w-25 text-center\">").concat(item[1].product.title, "</li>\n                    <li class=\"w-25 text-center ps-lg-2 ps-md-2 ps-0\">").concat(item[1].qty, "</li>\n                    <li class=\"w-25 text-center ps-lg-2 ps-md-2 ps-0 pe-lg-0 pe-md-0 pe-3\">").concat(item[1].total, "</li>\n                </ul>");
   });
   orderCheck.innerHTML = str;
 }
